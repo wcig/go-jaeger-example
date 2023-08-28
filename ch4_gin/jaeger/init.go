@@ -18,7 +18,7 @@ var (
 	tracerCloser io.Closer
 )
 
-func Init(serviceName string) (opentracing.Tracer, io.Closer) {
+func Init(serviceName string) {
 	cfg := &config.Configuration{
 		ServiceName: serviceName,
 		Sampler: &config.SamplerConfig{
@@ -34,13 +34,12 @@ func Init(serviceName string) (opentracing.Tracer, io.Closer) {
 	if err != nil {
 		panic(err)
 	}
+	opentracing.SetGlobalTracer(tracer)
 	tracerCloser = closer
-	return tracer, closer
 }
 
 func Close() {
-	err := tracerCloser.Close()
-	if err != nil {
+	if err := tracerCloser.Close(); err != nil {
 		fmt.Println("jaeger close err:", err)
 	}
 }

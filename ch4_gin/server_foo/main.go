@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	xhttp "goapp/ch4_gin/http"
 	"goapp/ch4_gin/jaeger"
 	"log"
 	"net/http"
@@ -15,16 +14,16 @@ import (
 )
 
 func main() {
-	jaeger.Init("server_bar")
+	jaeger.Init("server_foo")
 	runGinServer()
 }
 
 func runGinServer() {
 	router := gin.Default()
 	router.Use(jaeger.Trace)
-	router.GET("/bar", barHandler)
+	router.GET("/foo", fooHandler)
 	srv := &http.Server{
-		Addr:    ":8081",
+		Addr:    ":8082",
 		Handler: router,
 	}
 	go func() {
@@ -35,17 +34,13 @@ func runGinServer() {
 	gracefulShutdown(srv)
 }
 
-func barHandler(c *gin.Context) {
+func fooHandler(c *gin.Context) {
 	ctx := jaeger.GetSpanCtx(c)
-	span1, spanCtx := opentracing.StartSpanFromContext(ctx, "barHandler")
-	defer span1.Finish()
+	span, _ := opentracing.StartSpanFromContext(ctx, "fooHandler")
+	defer span.Finish()
 
-	time.Sleep(100 * time.Millisecond)
-
-	resp, err := xhttp.TraceClient.R().SetContext(spanCtx).Get("http://localhost:8082/foo")
-	log.Println(resp.String(), err)
-
-	c.JSON(http.StatusOK, map[string]interface{}{"server": "bar"})
+	time.Sleep(200 * time.Millisecond)
+	c.JSON(http.StatusOK, map[string]interface{}{"server": "foo"})
 }
 
 func gracefulShutdown(srv *http.Server) {
