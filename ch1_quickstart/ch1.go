@@ -7,7 +7,7 @@ import (
 	"github.com/opentracing/opentracing-go/log"
 )
 
-// 快速开始
+// quickstart
 func main() {
 	tracer, closer := tracing.InitJaeger("ch1_quickstart")
 	defer closer.Close()

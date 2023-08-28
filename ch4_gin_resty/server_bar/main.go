@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	xhttp "goapp/ch4_gin/http"
-	"goapp/ch4_gin/jaeger"
+	"goapp/ch4_gin_resty/jaeger"
+	xhttp "goapp/ch4_gin_resty/resty"
 	"log"
 	"net/http"
 	"os"

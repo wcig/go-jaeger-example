@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"goapp/ch4_gin/jaeger"
+	"goapp/ch4_gin_resty/jaeger"
 	"log"
 	"net/http"
 	"os"
