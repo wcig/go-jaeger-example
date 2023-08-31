@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"goapp/lib/tracing"
 	"net/http"
 	"time"
@@ -23,6 +24,9 @@ func main() {
 		span := opentracing.StartSpan("foo", ext.RPCServerOption(spanCtx))
 		span.SetTag("foo", 222222)
 		defer span.Finish()
+
+		date := span.BaggageItem("date")
+		fmt.Println("fooHandler get baggage item:", date)
 
 		time.Sleep(300 * time.Millisecond)
 		rw.WriteHeader(http.StatusOK)

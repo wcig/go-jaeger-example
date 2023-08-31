@@ -20,6 +20,7 @@ func main() {
 
 	span := opentracing.StartSpan("main")
 	span.SetTag("main", 111)
+	span.SetBaggageItem("date", "20230831")
 	defer span.Finish()
 
 	ctx := opentracing.ContextWithSpan(context.Background(), span)
@@ -43,6 +44,9 @@ func callBar(ctx context.Context) {
 	span, _ := opentracing.StartSpanFromContext(ctx, "callBar")
 	span.SetTag("callBar", 222)
 	defer span.Finish()
+
+	date := span.BaggageItem("date")
+	fmt.Println("callBar get baggage item:", date)
 
 	url := "http://localhost:8081/bar"
 	method := http.MethodGet
