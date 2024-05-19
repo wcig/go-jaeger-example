@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"goapp/ch4_gin_resty/jaeger"
 	"log"
 	"net/http"
 	"os"
@@ -11,6 +10,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/opentracing/opentracing-go"
+	"github.com/wcig/go-jaeger-example/ch4_gin_resty/jaeger"
 )
 
 func main() {

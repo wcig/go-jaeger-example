@@ -3,13 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
-	xhttp "goapp/lib/http"
-	"goapp/lib/tracing"
 	"net/http"
 	"time"
 
 	"github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/ext"
+	xhttp "github.com/wcig/go-jaeger-example/lib/http"
+	"github.com/wcig/go-jaeger-example/lib/tracing"
 )
 
 // Trace a transaction across more than one microservice

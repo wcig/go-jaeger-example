@@ -1,4 +1,4 @@
-module goapp
+module github.com/wcig/go-jaeger-example
 
 go 1.20
 

@@ -2,11 +2,11 @@ package main
 
 import (
 	"context"
-	"goapp/lib/tracing"
 	"testing"
 	"time"
 
 	"github.com/opentracing/opentracing-go"
+	"github.com/wcig/go-jaeger-example/lib/tracing"
 )
 
 const (

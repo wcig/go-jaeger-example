@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"goapp/lib/tracing"
 	"net/http"
 	"time"
 
 	"github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/ext"
+	"github.com/wcig/go-jaeger-example/lib/tracing"
 )
 
 func main() {

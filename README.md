@@ -1,4 +1,4 @@
-# Jaeger go example
+# Go Jaeger example
 
 ```shell
 # run jaeger

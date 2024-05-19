@@ -1,10 +1,10 @@
 package main
 
 import (
-	"goapp/lib/tracing"
 	"time"
 
 	"github.com/opentracing/opentracing-go/log"
+	"github.com/wcig/go-jaeger-example/lib/tracing"
 )
 
 // quickstart
