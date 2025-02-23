@@ -38,6 +38,16 @@ func main() {
 	// callFoo resp: {"server":"foo"}
 	// 2023/08/27 23:44:33 Reporting span 1d9752378fe4d05d:187fe4771a52880d:1d9752378fe4d05d:1
 	// 2023/08/27 23:44:33 Reporting span 1d9752378fe4d05d:1d9752378fe4d05d:0000000000000000:1
+
+	// 2025/02/23 22:15:52 debug logging disabled
+	// 2025/02/23 22:15:52 Initializing logging reporter
+	// 2025/02/23 22:15:52 debug logging disabled
+	// callBar get baggage item: 20230831
+	// callBar resp: {"server":"bar"}
+	// 2025/02/23 22:15:53 Reporting span 733f787dd1931b3f:78381841d9c5bb2c:733f787dd1931b3f:1
+	// callFoo resp: {"server":"foo"}
+	// 2025/02/23 22:15:53 Reporting span 733f787dd1931b3f:2d16d78141b9ec93:733f787dd1931b3f:1
+	// 2025/02/23 22:15:53 Reporting span 733f787dd1931b3f:733f787dd1931b3f:0000000000000000:1
 }
 
 func callBar(ctx context.Context) {
